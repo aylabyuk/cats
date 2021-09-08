@@ -1,11 +1,7 @@
 import React, { useCallback } from 'react'
 
 import Form from 'react-bootstrap/Form'
-
-interface Breed {
-  name: string
-  catId: string
-}
+import { Breed } from '../../../models'
 
 export interface BreedSelectProps {
   breeds: Breed[]
@@ -26,7 +22,7 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
       <Form.Label>Breed</Form.Label>
       <Form.Select>
         {breeds.map((breed) => (
-          <option value={breed.catId} key={breed.catId}>
+          <option value={breed.id} key={breed.id}>
             {breed.name}
           </option>
         ))}
