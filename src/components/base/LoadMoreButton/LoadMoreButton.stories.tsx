@@ -15,7 +15,6 @@ const Template: Story<LoadMoreButtonProps> = (args) => (
 export const SandBox = Template.bind({})
 SandBox.args = {
   loading: false,
-  onClick: action('onClick'),
 } as LoadMoreButtonProps
 
 export default meta

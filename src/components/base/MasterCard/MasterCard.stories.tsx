@@ -18,7 +18,6 @@ export const SandBox = Template.bind({})
 SandBox.args = {
   catId: 'awesomeCatID1234',
   imageUrl: 'https://cdn2.thecatapi.com/images/bTo6m3PVg.jpg',
-  onViewDetails: action('onViewDetails'),
 } as MasterCardProps
 
 export default meta

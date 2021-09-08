@@ -23,7 +23,6 @@ SandBox.args = {
   description:
     'The American Wirehair tends to be a calm and tolerant cat who takes life as it comes. His favorite hobby is bird-watching from a sunny windowsill, and his hunting ability will stand you in good stead if insects enter the house.',
   imageUrl: 'https://cdn2.thecatapi.com/images/bTo6m3PVg.jpg',
-  onBackClick: action('onBackClick'),
 } as DetailsCardProps
 
 export default meta
