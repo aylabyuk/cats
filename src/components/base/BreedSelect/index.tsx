@@ -35,4 +35,4 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
   )
 }
 
-export default BreedSelect
+export default React.memo(BreedSelect)
