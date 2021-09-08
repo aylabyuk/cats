@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import CatList, { CatListProps } from '.'
 
 const meta: Meta = {
-  title: 'Base/CatList',
+  title: 'Features/Cat List',
   component: CatList,
 }
 
