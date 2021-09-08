@@ -2,14 +2,11 @@ import React from 'react'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+
+import { Cat } from '../../../models'
 import useStyles from './useStyles'
 
-export interface DetailsCardProps {
-  catName: string
-  origin: string
-  temperament: string
-  description: string
-  imageUrl: string
+export interface DetailsCardProps extends Cat {
   onBackClick: () => void
 }
 
