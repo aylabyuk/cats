@@ -13,6 +13,7 @@ const Template: Story<LoadMoreButtonProps> = (args) => (
 export const SandBox = Template.bind({})
 SandBox.args = {
   loading: false,
+  disabled: false,
 } as LoadMoreButtonProps
 
 export default meta

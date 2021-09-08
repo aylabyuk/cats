@@ -7,13 +7,13 @@ import { Breed } from '../../../models'
 interface FetchBreedsResult {
   loading: boolean
   error: string
-  response: Breed[] | null
+  response: Breed[]
 }
 
 const useFetchBreeds = (): FetchBreedsResult => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [response, setResponse] = useState<Breed[] | null>(null)
+  const [response, setResponse] = useState<Breed[]>([])
 
   const fetchBreeds = () => {
     axios

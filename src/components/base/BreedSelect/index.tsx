@@ -21,6 +21,7 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
     <Form.Group controlId="breeds" onChange={handleSelect}>
       <Form.Label>Breed</Form.Label>
       <Form.Select>
+        <option value={0}>Select breed</option>
         {breeds.map((breed) => (
           <option value={breed.id} key={breed.id}>
             {breed.name}

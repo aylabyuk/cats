@@ -5,13 +5,15 @@ import Button from 'react-bootstrap/Button'
 export interface LoadMoreButtonProps {
   onClick: () => void
   loading?: boolean
+  disabled?: boolean
 }
 
 export const LoadMoreButton: React.FC<LoadMoreButtonProps> = ({
   onClick,
   loading,
+  disabled,
 }) => (
-  <Button disabled={loading} variant="success" onClick={onClick}>
+  <Button disabled={disabled || loading} variant="success" onClick={onClick}>
     {loading ? 'Loading cats...' : 'Load more'}
   </Button>
 )
