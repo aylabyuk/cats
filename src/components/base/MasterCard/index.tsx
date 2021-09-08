@@ -3,6 +3,8 @@ import React, { useCallback } from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
+import useStyles from './useStyles'
+
 export interface MasterCardProps {
   catId: string
   imageUrl: string
@@ -14,6 +16,8 @@ export const MasterCard: React.FC<MasterCardProps> = ({
   imageUrl,
   onViewDetails,
 }) => {
+  const classes = useStyles()
+
   const handleViewDetails = useCallback(() => onViewDetails(catId), [
     onViewDetails,
   ])
@@ -22,7 +26,11 @@ export const MasterCard: React.FC<MasterCardProps> = ({
     <Card>
       <Card.Img variant="top" src={imageUrl} />
       <Card.Body>
-        <Button variant="primary" onClick={handleViewDetails}>
+        <Button
+          className={classes.button}
+          variant="primary"
+          onClick={handleViewDetails}
+        >
           View Details
         </Button>
       </Card.Body>

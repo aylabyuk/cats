@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import MasterCard, { MasterCardProps } from '.'
 
 const meta: Meta = {
-  title: 'Base/MasterCard',
+  title: 'Base/Master Card',
   component: MasterCard,
 }
 
