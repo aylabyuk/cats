@@ -2,6 +2,7 @@ import React from 'react'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import useStyles from './useStyles'
 
 export interface DetailsCardProps {
   catName: string
@@ -20,9 +21,11 @@ export const DetailsCard: React.FC<DetailsCardProps> = ({
   imageUrl,
   onBackClick,
 }) => {
+  const classes = useStyles()
+
   return (
     <Card>
-      <Card.Header>
+      <Card.Header className={classes.header}>
         <Button onClick={onBackClick} variant="primary">
           Back
         </Button>
