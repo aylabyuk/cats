@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 
 interface Breed {
   name: string
-  id: string
+  catId: string
 }
 
 export interface BreedSelectProps {
@@ -26,7 +26,7 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
       <Form.Label>Breed</Form.Label>
       <Form.Select>
         {breeds.map((breed) => (
-          <option value={breed.id} key={breed.id}>
+          <option value={breed.catId} key={breed.catId}>
             {breed.name}
           </option>
         ))}

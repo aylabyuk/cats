@@ -1,5 +1,6 @@
 export interface Cat {
-  id: string
+  pathId: string
+  catId: string
   catName: string
   origin: string
   temperament: string

@@ -23,9 +23,9 @@ export const MasterCard: React.FC<MasterCardProps> = ({
   ])
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <Card.Img variant="top" src={imageUrl} />
-      <Card.Body>
+      <Card.Body className={classes.cardBody}>
         <Button
           className={classes.button}
           variant="primary"
