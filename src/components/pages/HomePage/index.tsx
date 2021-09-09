@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -8,16 +7,20 @@ import { BreedSelect } from '../../base/BreedSelect'
 import useFetchBreeds from './useFetchBreeds'
 import CatList from '../../features/CatList'
 import LoadMoreButton from '../../base/LoadMoreButton'
+import PageContainer from '../../base/PageContainer'
+
+import useStyles from './useStyles'
 
 export interface HomePageProps {}
 
 export const HomePage: React.FC<HomePageProps> = ({}) => {
+  const classes = useStyles()
   const { loading, error, response } = useFetchBreeds()
 
   return (
-    <Container fluid="sm">
+    <PageContainer>
       <h1>Cat Browser</h1>
-      <Row>
+      <Row className={classes.select}>
         <Col md={3} sm={6} xs={12}>
           {loading ? (
             <h2>Loading...</h2>
@@ -30,16 +33,14 @@ export const HomePage: React.FC<HomePageProps> = ({}) => {
         </Col>
       </Row>
       <Row>
-        <Col md={3} sm={6} xs={12}>
-          <CatList cats={[]} />
-        </Col>
+        <CatList cats={[]} />
       </Row>
       <Row>
         <Col md={3} sm={6} xs={12}>
           <LoadMoreButton onClick={() => console.log('test')} />
         </Col>
       </Row>
-    </Container>
+    </PageContainer>
   )
 }
 

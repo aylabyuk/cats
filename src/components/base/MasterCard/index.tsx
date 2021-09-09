@@ -20,6 +20,7 @@ export const MasterCard: React.FC<MasterCardProps> = ({
 
   const handleViewDetails = useCallback(() => onViewDetails(catId), [
     onViewDetails,
+    catId,
   ])
 
   return (
