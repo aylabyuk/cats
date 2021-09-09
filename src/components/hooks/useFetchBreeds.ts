@@ -37,7 +37,7 @@ const useFetchBreeds = (): FetchBreedsResult => {
   /**
    * Start fetching as soon as the component mounts
    */
-  useEffect(() => fetchBreeds(), [])
+  useEffect(() => fetchBreeds(), [fetchBreeds])
 
   return { loading, error, response }
 }

@@ -76,7 +76,7 @@ const useFetchCats = (breedId: string | null): FetchCatsResult => {
         setPage(page + 1)
         setLoading(false)
       })
-  }, [breedId, prevBreedId, page, isBreedIdChanged])
+  }, [breedId, page, isBreedIdChanged, response])
 
   /**
    * Fetch cats on component mount
@@ -84,8 +84,10 @@ const useFetchCats = (breedId: string | null): FetchCatsResult => {
   useEffect(() => {
     if (!breedId) return
 
-    fetchCats()
-  }, [breedId])
+    if (isBreedIdChanged) {
+      fetchCats()
+    }
+  }, [breedId, fetchCats, isBreedIdChanged])
 
   return {
     loading,

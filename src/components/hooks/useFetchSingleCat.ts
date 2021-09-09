@@ -39,12 +39,12 @@ const useFetchSingleCat = (catId: string): FetchSingleCatResult => {
       })
       .catch((err) => setError(err))
       .finally(() => setLoading(false))
-  }, [])
+  }, [catId])
 
   /**
    * Start fetching as soon as the component mounts
    */
-  useEffect(() => fetchCat(), [])
+  useEffect(() => fetchCat(), [fetchCat])
 
   return { loading, error, response }
 }

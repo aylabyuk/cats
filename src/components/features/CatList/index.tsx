@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import Col from 'react-bootstrap/Col'
 
 import { Cat } from '../../../models'
