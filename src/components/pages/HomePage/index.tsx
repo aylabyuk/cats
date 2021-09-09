@@ -67,18 +67,17 @@ export const HomePage: React.FC = () => {
         )}
       </Row>
 
-      {!isEndOfPage ||
-        (!catsError && (
-          <Row>
-            <Col md={3} sm={6} xs={12}>
-              <LoadMoreButton
-                onClick={loadMore}
-                loading={catsLoading}
-                disabled={!cats.length}
-              />
-            </Col>
-          </Row>
-        ))}
+      {!isEndOfPage && (
+        <Row>
+          <Col md={3} sm={6} xs={12}>
+            <LoadMoreButton
+              onClick={loadMore}
+              loading={catsLoading}
+              disabled={!cats.length}
+            />
+          </Col>
+        </Row>
+      )}
     </PageContainer>
   )
 }
