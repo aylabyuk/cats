@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import useFetchBreeds from '../../hooks/useFetchBreeds'
 import CatList from '../../features/CatList'
 import SelectInputSection from '../../features/SelectInputSection'
 import LoadMoreButton from '../../base/LoadMoreButton'
 import PageContainer from '../../base/PageContainer'
 
+import useFetchBreeds from '../../hooks/useFetchBreeds'
+import useFetchCats from '../../hooks/useFetchCats'
+
 import useStyles from './useStyles'
 
 export const HomePage: React.FC = () => {
+  const [currentBreedId, setCurrentBreedId] = useState('')
   const classes = useStyles()
-  const { loading, error, response } = useFetchBreeds()
+
+  const {
+    loading: breedsLoading,
+    error: breedsError,
+    response: breeds,
+  } = useFetchBreeds()
+
+  const {
+    loading: catsLoading,
+    error: catLoading,
+    response: cats,
+    loadMore,
+  } = useFetchCats(currentBreedId)
+
+  const handleSelectBreed = useCallback((breedId: string) => {
+    setCurrentBreedId(breedId)
+  }, [])
 
   return (
     <PageContainer>
@@ -20,19 +39,19 @@ export const HomePage: React.FC = () => {
       <Row className={classes.select}>
         <Col md={3} sm={6} xs={12}>
           <SelectInputSection
-            loading={loading}
-            error={!!error}
-            breeds={response}
-            onSelectBreed={() => console.log('test')}
+            loading={breedsLoading}
+            error={!!breedsError}
+            breeds={breeds}
+            onSelectBreed={handleSelectBreed}
           />
         </Col>
       </Row>
       <Row>
-        <CatList cats={[]} />
+        <CatList cats={cats} />
       </Row>
       <Row>
         <Col md={3} sm={6} xs={12}>
-          <LoadMoreButton onClick={() => console.log('test')} />
+          <LoadMoreButton onClick={loadMore} loading={catsLoading} />
         </Col>
       </Row>
     </PageContainer>

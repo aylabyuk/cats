@@ -14,7 +14,7 @@ const Template: Story<DetailsCardProps> = (args) => (
 
 export const SandBox = Template.bind({})
 SandBox.args = {
-  catName: 'American Wirehair',
+  name: 'American Wirehair',
   origin: 'United States',
   temperament:
     'Affectionate, Curious, Gentle, Intelligent, Interactive, Lively, Loyal, Playful, Sensible, Social',

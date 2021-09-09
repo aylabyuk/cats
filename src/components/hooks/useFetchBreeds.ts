@@ -10,6 +10,10 @@ interface FetchBreedsResult {
   response: Breed[]
 }
 
+/**
+ * Hook for fetching Cat Breeds
+ * @returns
+ */
 const useFetchBreeds = (): FetchBreedsResult => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -30,6 +34,9 @@ const useFetchBreeds = (): FetchBreedsResult => {
       .finally(() => setLoading(false))
   }
 
+  /**
+   * Start fetching as soon as the component mounts
+   */
   useEffect(() => fetchBreeds(), [])
 
   return { loading, error, response }
