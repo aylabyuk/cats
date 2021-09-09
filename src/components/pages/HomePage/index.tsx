@@ -50,7 +50,7 @@ export const HomePage: React.FC = () => {
         </Col>
       </Row>
       <Row>
-        <CatList cats={cats} loading={catsLoading} />
+        <CatList cats={cats} />
       </Row>
 
       {!isEndOfPage && (

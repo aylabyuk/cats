@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 import axios from 'axios'
 
 import useRefValue from './useRefValue'
@@ -27,8 +27,21 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
 
   const prevBreedId = useRefValue(breedId)
 
+  /**
+   * Keep track if breedId is changed
+   */
+  const isBreedIdChanged = useMemo(() => prevBreedId !== breedId, [
+    prevBreedId,
+    breedId,
+  ])
+
   const fetchCats = useCallback(() => {
     setLoading(true)
+
+    if (isBreedIdChanged) {
+      setIsEndOfPage(false)
+      setResponse([])
+    }
 
     axios
       .get(`${constants.searchUrl}?page=${page}&limit=10&breed_id=${breedId}`)
@@ -41,13 +54,7 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
             } as Cat),
         )
 
-        // check if breedId is changed
-        const isBreedIdChanged = prevBreedId !== breedId
         const updated = isBreedIdChanged ? newCats : [...response, ...newCats]
-
-        if (isBreedIdChanged) {
-          setIsEndOfPage(false)
-        }
 
         // make sure there are no duplicates
         const filtered = updated.filter(
@@ -56,7 +63,7 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
             index,
         )
 
-        if (response.length === filtered.length) {
+        if (response.length === filtered.length && !isBreedIdChanged) {
           setIsEndOfPage(true)
         }
 
@@ -67,7 +74,7 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
         setPage(page + 1)
         setLoading(false)
       })
-  }, [breedId, prevBreedId, page])
+  }, [breedId, prevBreedId, page, isBreedIdChanged])
 
   /**
    * Fetch cats on component mount
@@ -78,7 +85,13 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
     fetchCats()
   }, [breedId])
 
-  return { loading, error, response, loadMore: fetchCats, isEndOfPage }
+  return {
+    loading,
+    error,
+    response,
+    loadMore: fetchCats,
+    isEndOfPage,
+  }
 }
 
 export default useFetchCats

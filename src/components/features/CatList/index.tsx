@@ -7,15 +7,14 @@ import MasterCard from '../../base/MasterCard'
 
 export interface CatListProps {
   cats: Cat[]
-  loading: boolean
 }
 
-export const CatList: React.FC<CatListProps> = ({ cats, loading }) => {
+export const CatList: React.FC<CatListProps> = ({ cats }) => {
   const classes = useStyles()
 
   const handleViewDetails = useCallback(() => console.log('meow'), [])
 
-  if (!cats.length || loading) {
+  if (!cats.length) {
     return (
       <Col className={classes.noCatsCol} xs={12}>
         No cats available
