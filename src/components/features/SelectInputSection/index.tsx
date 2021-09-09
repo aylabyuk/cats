@@ -1,4 +1,5 @@
 import React from 'react'
+import Alert from 'react-bootstrap/Alert'
 
 import BreedSelect, { BreedSelectProps } from '../../base/BreedSelect'
 
@@ -17,7 +18,11 @@ export const SelectInputSection: React.FC<SelectInputSectionProps> = ({
   }
 
   if (error || !rest.breeds.length) {
-    return <h2>Sorry. Can't fetch breed list right now, 😿 Meow!</h2>
+    return (
+      <Alert variant="warning">
+        Sorry. Can't fetch breed list right now, Meow! 😿
+      </Alert>
+    )
   }
 
   return <BreedSelect {...rest} />

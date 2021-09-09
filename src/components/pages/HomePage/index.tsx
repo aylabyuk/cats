@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Alert from 'react-bootstrap/Alert'
 
 import CatList from '../../features/CatList'
 import SelectInputSection from '../../features/SelectInputSection'
@@ -54,20 +55,30 @@ export const HomePage: React.FC = () => {
         </Col>
       </Row>
       <Row>
-        <CatList cats={cats} />
+        {catsError ? (
+          <Col md={3} sm={6} xs={12}>
+            <Alert variant="warning">
+              Apologies but we could not load new cats for you at this time!
+              Meow! 🐱
+            </Alert>
+          </Col>
+        ) : (
+          <CatList cats={cats} />
+        )}
       </Row>
 
-      {!isEndOfPage && (
-        <Row>
-          <Col md={3} sm={6} xs={12}>
-            <LoadMoreButton
-              onClick={loadMore}
-              loading={catsLoading}
-              disabled={!cats.length}
-            />
-          </Col>
-        </Row>
-      )}
+      {!isEndOfPage ||
+        (!catsError && (
+          <Row>
+            <Col md={3} sm={6} xs={12}>
+              <LoadMoreButton
+                onClick={loadMore}
+                loading={catsLoading}
+                disabled={!cats.length}
+              />
+            </Col>
+          </Row>
+        ))}
     </PageContainer>
   )
 }
