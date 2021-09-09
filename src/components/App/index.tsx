@@ -14,7 +14,7 @@ export const App: React.FC = () => {
       <Router>
         <Switch>
           <Route exact path="/" render={() => <HomePage />} />
-          <Route path="/:cat" render={() => <DetailsPage />} />
+          <Route path="/:catId" render={() => <DetailsPage />} />
         </Switch>
       </Router>
     </div>

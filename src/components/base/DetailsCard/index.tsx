@@ -2,15 +2,12 @@ import React from 'react'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
-import { Breed } from '../../../models'
+import { Cat } from '../../../models'
 import useStyles from './useStyles'
 
-export interface DetailsCardProps extends Breed {
-  pathUrl: string
-  imageUrl: string
-  onBackClick: () => void
-}
+export interface DetailsCardProps extends Cat {}
 
 export const DetailsCard: React.FC<DetailsCardProps> = ({
   id,
@@ -19,16 +16,15 @@ export const DetailsCard: React.FC<DetailsCardProps> = ({
   temperament,
   description,
   imageUrl,
-  onBackClick,
 }) => {
   const classes = useStyles()
 
   return (
     <Card>
       <Card.Header className={classes.header}>
-        <Button onClick={onBackClick} variant="primary">
+        <Link to={`/?breed=${id}`} component={Button}>
           Back
-        </Button>
+        </Link>
       </Card.Header>
       <Card.Img src={imageUrl} />
       <Card.Body>

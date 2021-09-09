@@ -12,8 +12,6 @@ export interface CatListProps {
 export const CatList: React.FC<CatListProps> = ({ cats }) => {
   const classes = useStyles()
 
-  const handleViewDetails = useCallback(() => console.log('meow'), [])
-
   if (!cats.length) {
     return (
       <Col className={classes.noCatsCol} xs={12}>
@@ -26,7 +24,7 @@ export const CatList: React.FC<CatListProps> = ({ cats }) => {
     <>
       {cats.map((cat) => (
         <Col key={cat.catId} md={3} sm={6} xs={12}>
-          <MasterCard {...cat} onViewDetails={handleViewDetails} />
+          <MasterCard {...cat} />
         </Col>
       ))}
     </>

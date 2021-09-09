@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
@@ -8,32 +9,23 @@ import useStyles from './useStyles'
 export interface MasterCardProps {
   catId: string
   imageUrl: string
-  onViewDetails: (catId: string) => void
 }
 
-export const MasterCard: React.FC<MasterCardProps> = ({
-  catId,
-  imageUrl,
-  onViewDetails,
-}) => {
+export const MasterCard: React.FC<MasterCardProps> = ({ catId, imageUrl }) => {
   const classes = useStyles()
-
-  const handleViewDetails = useCallback(() => onViewDetails(catId), [
-    onViewDetails,
-    catId,
-  ])
 
   return (
     <Card className={classes.card}>
       <Card.Img variant="top" src={imageUrl} />
       <Card.Body className={classes.cardBody}>
-        <Button
+        <Link
+          to={`/${catId}`}
           className={classes.button}
-          variant="primary"
-          onClick={handleViewDetails}
+          // variant="primary"
+          component={Button}
         >
           View Details
-        </Button>
+        </Link>
       </Card.Body>
     </Card>
   )

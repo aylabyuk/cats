@@ -44,7 +44,9 @@ const useFetchCats = (breedId?: string): FetchCatsResult => {
     }
 
     axios
-      .get(`${constants.searchUrl}?page=${page}&limit=10&breed_id=${breedId}`)
+      .get(
+        `${constants.catApi}/images/search?page=${page}&limit=10&breed_id=${breedId}`,
+      )
       .then((res) => {
         const newCats: Cat[] = res.data.map(
           (cat: any) =>

@@ -1,6 +1,5 @@
 const constants = {
-  breedsUrl: 'https://api.thecatapi.com/v1/breeds',
-  searchUrl: 'https://api.thecatapi.com/v1/images/search',
+  catApi: 'https://api.thecatapi.com/v1',
 }
 
 export default constants

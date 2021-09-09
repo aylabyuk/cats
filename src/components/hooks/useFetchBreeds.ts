@@ -21,7 +21,7 @@ const useFetchBreeds = (): FetchBreedsResult => {
 
   const fetchBreeds = useCallback(() => {
     axios
-      .get(constants.breedsUrl)
+      .get(`${constants.catApi}/breeds`)
       .then((res) => {
         const breeds: Breed[] = res.data.map((breed: any) => ({
           id: breed.id,

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import SelectInputSection, { SelectInputSectionProps } from '.'
 
 const meta: Meta = {
@@ -15,11 +14,41 @@ const Template: Story<SelectInputSectionProps> = (args) => (
 export const SandBox = Template.bind({})
 SandBox.args = {
   breeds: [
-    { name: 'Abyssinian', id: 'abys' },
-    { name: 'Aegean', id: 'aege' },
-    { name: 'American Bobtail', id: 'abob' },
-    { name: 'American Curl', id: 'acur' },
-    { name: 'American Shorthair', id: 'asho' },
+    {
+      name: 'Abyssinian',
+      id: 'abys',
+      origin: '',
+      description: '',
+      temperament: '',
+    },
+    {
+      name: 'Aegean',
+      id: 'aege',
+      origin: '',
+      description: '',
+      temperament: '',
+    },
+    {
+      name: 'American Bobtail',
+      id: 'abob',
+      origin: '',
+      description: '',
+      temperament: '',
+    },
+    {
+      name: 'American Curl',
+      id: 'acur',
+      origin: '',
+      description: '',
+      temperament: '',
+    },
+    {
+      name: 'American Shorthair',
+      id: 'asho',
+      origin: '',
+      description: '',
+      temperament: '',
+    },
   ],
   loading: false,
 }
