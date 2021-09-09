@@ -1,4 +1,6 @@
 import { Meta, Story } from '@storybook/react'
+import Row from 'react-bootstrap/Row'
+
 import CatList, { CatListProps } from '.'
 
 const meta: Meta = {
@@ -6,7 +8,11 @@ const meta: Meta = {
   component: CatList,
 }
 
-const Template: Story<CatListProps> = (args) => <CatList {...args} />
+const Template: Story<CatListProps> = (args) => (
+  <Row>
+    <CatList {...args} />
+  </Row>
+)
 
 export const SandBox = Template.bind({})
 SandBox.args = {
