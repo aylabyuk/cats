@@ -22,7 +22,13 @@ export const DetailsCard: React.FC<DetailsCardProps> = ({
   return (
     <Card>
       <Card.Header className={classes.header}>
-        <Link to={`/?breed=${id}`} component={Button}>
+        <Link
+          to={{
+            pathname: '/',
+            search: `?breed=${id}`,
+          }}
+          component={Button}
+        >
           Back
         </Link>
       </Card.Header>

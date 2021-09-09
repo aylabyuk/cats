@@ -18,7 +18,7 @@ interface FetchCatsResult {
  * @param breedId a Cat breed identification
  * @returns
  */
-const useFetchCats = (breedId?: string): FetchCatsResult => {
+const useFetchCats = (breedId: string | null): FetchCatsResult => {
   const [loading, setLoading] = useState(false)
   const [isEndOfPage, setIsEndOfPage] = useState(false)
   const [error, setError] = useState('')

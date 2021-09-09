@@ -9,12 +9,15 @@ import PageContainer from '../../base/PageContainer'
 
 import useFetchBreeds from '../../hooks/useFetchBreeds'
 import useFetchCats from '../../hooks/useFetchCats'
+import useQuery from '../../hooks/useQuery'
 
 import useStyles from './useStyles'
 
 export const HomePage: React.FC = () => {
-  const [currentBreedId, setCurrentBreedId] = useState<string | undefined>(
-    undefined,
+  const query = useQuery()
+
+  const [currentBreedId, setCurrentBreedId] = useState<string | null>(
+    query.get('breed'),
   )
   const classes = useStyles()
 
@@ -32,9 +35,10 @@ export const HomePage: React.FC = () => {
     isEndOfPage,
   } = useFetchCats(currentBreedId)
 
-  const handleSelectBreed = useCallback((breedId: string) => {
-    setCurrentBreedId(breedId)
-  }, [])
+  const handleSelectBreed = useCallback(
+    (breedId: string) => setCurrentBreedId(breedId),
+    [],
+  )
 
   return (
     <PageContainer>

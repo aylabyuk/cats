@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
-
 import Form from 'react-bootstrap/Form'
+
 import { Breed } from '../../../models'
+import useQuery from '../../hooks/useQuery'
 import useStyles from './useStyles'
 
 export interface BreedSelectProps {
@@ -13,6 +14,7 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
   breeds,
   onSelectBreed,
 }) => {
+  const query = useQuery()
   const classes = useStyles()
 
   const handleSelect = useCallback(
@@ -23,8 +25,8 @@ export const BreedSelect: React.FC<BreedSelectProps> = ({
   return (
     <Form.Group className={classes.formGroup} onChange={handleSelect}>
       <Form.Label>Breed</Form.Label>
-      <Form.Select>
-        <option value={0}>Select breed</option>
+      <Form.Select defaultValue={query.get('breed') || ''}>
+        <option>Select breed</option>
         {breeds.map((breed) => (
           <option value={breed.id} key={breed.id}>
             {breed.name}

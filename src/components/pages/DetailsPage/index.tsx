@@ -12,7 +12,11 @@ export const DetailsPage: React.FC = () => {
 
   return (
     <PageContainer>
-      {loading || !response ? <h2>Loading</h2> : <DetailsCard {...response} />}
+      {loading || !response ? (
+        <h5>Loading...</h5>
+      ) : (
+        <DetailsCard {...response} />
+      )}
     </PageContainer>
   )
 }
