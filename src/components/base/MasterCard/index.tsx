@@ -18,13 +18,8 @@ export const MasterCard: React.FC<MasterCardProps> = ({ catId, imageUrl }) => {
     <Card className={classes.card}>
       <Card.Img variant="top" src={imageUrl} />
       <Card.Body className={classes.cardBody}>
-        <Link
-          to={`/${catId}`}
-          className={classes.button}
-          // variant="primary"
-          component={Button}
-        >
-          View Details
+        <Link to={`/${catId}`}>
+          <Button className={classes.button}>View Details</Button>
         </Link>
       </Card.Body>
     </Card>

@@ -27,9 +27,8 @@ export const DetailsCard: React.FC<DetailsCardProps> = ({
             pathname: '/',
             search: `?breed=${id}`,
           }}
-          component={Button}
         >
-          Back
+          <Button>Back</Button>
         </Link>
       </Card.Header>
       <Card.Img src={imageUrl} />
