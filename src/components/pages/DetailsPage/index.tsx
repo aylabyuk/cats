@@ -1,8 +1,6 @@
 import React from 'react'
 
-export interface DetailsPageProps {}
-
-export const DetailsPage: React.FC<DetailsPageProps> = ({}) => {
+export const DetailsPage: React.FC = () => {
   return <div className="">Details page</div>
 }
 

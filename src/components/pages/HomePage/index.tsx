@@ -2,18 +2,15 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import { BreedSelect } from '../../base/BreedSelect'
-
-import useFetchBreeds from './useFetchBreeds'
+import useFetchBreeds from '../../hooks/useFetchBreeds'
 import CatList from '../../features/CatList'
+import SelectInputSection from '../../features/SelectInputSection'
 import LoadMoreButton from '../../base/LoadMoreButton'
 import PageContainer from '../../base/PageContainer'
 
 import useStyles from './useStyles'
 
-export interface HomePageProps {}
-
-export const HomePage: React.FC<HomePageProps> = ({}) => {
+export const HomePage: React.FC = () => {
   const classes = useStyles()
   const { loading, error, response } = useFetchBreeds()
 
@@ -22,14 +19,12 @@ export const HomePage: React.FC<HomePageProps> = ({}) => {
       <h1>Cat Browser</h1>
       <Row className={classes.select}>
         <Col md={3} sm={6} xs={12}>
-          {loading ? (
-            <h2>Loading...</h2>
-          ) : (
-            <BreedSelect
-              breeds={response}
-              onSelectBreed={() => console.log('test')}
-            />
-          )}
+          <SelectInputSection
+            loading={loading}
+            error={!!error}
+            breeds={response}
+            onSelectBreed={() => console.log('test')}
+          />
         </Col>
       </Row>
       <Row>

@@ -6,7 +6,7 @@ import HomePage from '../pages/HomePage'
 import DetailsPage from '../pages/DetailsPage'
 import useStyles from './useStyles'
 
-export const App: React.FC = ({}) => {
+export const App: React.FC = () => {
   const classes = useStyles()
 
   return (

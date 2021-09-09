@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import constants from '../../../constants'
-import { Breed } from '../../../models'
+import constants from '../../constants'
+import { Breed } from '../../models'
 
 interface FetchBreedsResult {
   loading: boolean
