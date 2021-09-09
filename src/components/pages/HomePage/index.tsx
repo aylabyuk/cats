@@ -13,7 +13,9 @@ import useFetchCats from '../../hooks/useFetchCats'
 import useStyles from './useStyles'
 
 export const HomePage: React.FC = () => {
-  const [currentBreedId, setCurrentBreedId] = useState('')
+  const [currentBreedId, setCurrentBreedId] = useState<string | undefined>(
+    undefined,
+  )
   const classes = useStyles()
 
   const {
@@ -24,9 +26,10 @@ export const HomePage: React.FC = () => {
 
   const {
     loading: catsLoading,
-    error: catLoading,
+    error: catsError,
     response: cats,
     loadMore,
+    isEndOfPage,
   } = useFetchCats(currentBreedId)
 
   const handleSelectBreed = useCallback((breedId: string) => {
@@ -47,13 +50,20 @@ export const HomePage: React.FC = () => {
         </Col>
       </Row>
       <Row>
-        <CatList cats={cats} />
+        <CatList cats={cats} loading={catsLoading} />
       </Row>
-      <Row>
-        <Col md={3} sm={6} xs={12}>
-          <LoadMoreButton onClick={loadMore} loading={catsLoading} />
-        </Col>
-      </Row>
+
+      {!isEndOfPage && (
+        <Row>
+          <Col md={3} sm={6} xs={12}>
+            <LoadMoreButton
+              onClick={loadMore}
+              loading={catsLoading}
+              disabled={!cats.length}
+            />
+          </Col>
+        </Row>
+      )}
     </PageContainer>
   )
 }

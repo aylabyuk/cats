@@ -7,6 +7,7 @@ import { Cat } from '../../models'
 
 interface FetchCatsResult {
   loading: boolean
+  isEndOfPage: boolean
   error: string
   response: Cat[]
   loadMore: () => void
@@ -17,15 +18,16 @@ interface FetchCatsResult {
  * @param breedId a Cat breed identification
  * @returns
  */
-const useFetchCats = (breedId: string): FetchCatsResult => {
-  const [loading, setLoading] = useState(true)
+const useFetchCats = (breedId?: string): FetchCatsResult => {
+  const [loading, setLoading] = useState(false)
+  const [isEndOfPage, setIsEndOfPage] = useState(false)
   const [error, setError] = useState('')
   const [response, setResponse] = useState<Cat[]>([])
   const [page, setPage] = useState(1)
 
   const prevBreedId = useRefValue(breedId)
 
-  const fetchCats = () => {
+  const fetchCats = useCallback(() => {
     setLoading(true)
 
     axios
@@ -39,33 +41,44 @@ const useFetchCats = (breedId: string): FetchCatsResult => {
             } as Cat),
         )
 
-        const updated = response.concat(newCats)
-        setResponse(updated)
+        // check if breedId is changed
+        const isBreedIdChanged = prevBreedId !== breedId
+        const updated = isBreedIdChanged ? newCats : [...response, ...newCats]
+
+        if (isBreedIdChanged) {
+          setIsEndOfPage(false)
+        }
+
+        // make sure there are no duplicates
+        const filtered = updated.filter(
+          (item, index, array) =>
+            array.findIndex((current) => current.catId === item.catId) ===
+            index,
+        )
+
+        if (response.length === filtered.length) {
+          setIsEndOfPage(true)
+        }
+
+        setResponse(filtered)
       })
       .catch((err) => setError(err))
       .finally(() => {
-        setPage((current) => current + 1)
+        setPage(page + 1)
         setLoading(false)
       })
-  }
+  }, [breedId, prevBreedId, page])
 
   /**
-   * If the breedId is changed, the response value is reset
-   * and new sets of cats will be fetched
+   * Fetch cats on component mount
    */
   useEffect(() => {
-    if (prevBreedId !== breedId) {
-      setResponse([])
-      fetchCats()
-    }
-  }, [breedId, prevBreedId])
+    if (!breedId) return
 
-  /**
-   * Will load more cats and add it to the list
-   */
-  const loadMore = useCallback(() => fetchCats(), [])
+    fetchCats()
+  }, [breedId])
 
-  return { loading, error, response, loadMore }
+  return { loading, error, response, loadMore: fetchCats, isEndOfPage }
 }
 
 export default useFetchCats

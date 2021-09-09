@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import constants from '../../constants'
@@ -19,7 +19,7 @@ const useFetchBreeds = (): FetchBreedsResult => {
   const [error, setError] = useState('')
   const [response, setResponse] = useState<Breed[]>([])
 
-  const fetchBreeds = () => {
+  const fetchBreeds = useCallback(() => {
     axios
       .get(constants.breedsUrl)
       .then((res) => {
@@ -32,7 +32,7 @@ const useFetchBreeds = (): FetchBreedsResult => {
       })
       .catch((err) => setError(err))
       .finally(() => setLoading(false))
-  }
+  }, [])
 
   /**
    * Start fetching as soon as the component mounts
