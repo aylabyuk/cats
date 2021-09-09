@@ -1,3 +1,9 @@
+# Cat Browser
+
+![cat](https://cdn2.thecatapi.com/images/GlwgzUMan.jpg)
+
+A simple application for browsing Cat data from the [CatAPI](https://thecatapi.com/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
