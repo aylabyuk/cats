@@ -5,6 +5,9 @@ import SelectInputSection, { SelectInputSectionProps } from '.'
 const meta: Meta = {
   title: 'Features/Select Input Section',
   component: SelectInputSection,
+  parameters: {
+    componentSubtitle: 'Input section where you can select a breed to display',
+  },
 }
 
 const Template: Story<SelectInputSectionProps> = (args) => (

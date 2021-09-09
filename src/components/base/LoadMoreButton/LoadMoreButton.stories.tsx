@@ -4,6 +4,9 @@ import LoadMoreButton, { LoadMoreButtonProps } from '.'
 const meta: Meta = {
   title: 'Base/LoadMore Button',
   component: LoadMoreButton,
+  parameters: {
+    componentSubtitle: '😺 Button to trigger fetching of cats data 😺',
+  },
 }
 
 const Template: Story<LoadMoreButtonProps> = (args) => (

@@ -6,6 +6,10 @@ import CatList, { CatListProps } from '.'
 const meta: Meta = {
   title: 'Features/Cat List',
   component: CatList,
+  parameters: {
+    componentSubtitle:
+      'You want more meow meow, here you go! This is the list component have fun 😁!',
+  },
 }
 
 const Template: Story<CatListProps> = (args) => (

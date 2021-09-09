@@ -4,6 +4,10 @@ import MasterCard, { MasterCardProps } from '.'
 const meta: Meta = {
   title: 'Base/Master Card',
   component: MasterCard,
+  parameters: {
+    componentSubtitle:
+      "This is not a global bank card payment transaction processor 😅, Sorry I can't think of a better component name. But this is a card for the cat list",
+  },
 }
 
 const Template: Story<MasterCardProps> = (args) => (

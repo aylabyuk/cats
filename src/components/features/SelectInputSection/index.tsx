@@ -4,7 +4,14 @@ import Alert from 'react-bootstrap/Alert'
 import BreedSelect, { BreedSelectProps } from '../../base/BreedSelect'
 
 export interface SelectInputSectionProps extends BreedSelectProps {
+  /**
+   * Flag whether the list is currently being fetched
+   */
   loading: boolean
+
+  /**
+   * Flag if there is an error while fetching data
+   */
   error: boolean
 }
 

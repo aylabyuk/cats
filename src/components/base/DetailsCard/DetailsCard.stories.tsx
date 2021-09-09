@@ -4,10 +4,13 @@ import DetailsCard, { DetailsCardProps } from '.'
 const meta: Meta = {
   title: 'Base/Details Card',
   component: DetailsCard,
+  parameters: {
+    componentSubtitle: 'A card that display a cat details',
+  },
 }
 
 const Template: Story<DetailsCardProps> = (args) => (
-  <div style={{ width: 1108 }}>
+  <div style={{ maxWidth: 1108 }}>
     <DetailsCard {...args} />
   </div>
 )

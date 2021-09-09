@@ -6,7 +6,14 @@ import useQuery from '../../hooks/useQuery'
 import useStyles from './useStyles'
 
 export interface BreedSelectProps {
+  /**
+   *  List of cat breeds
+   */
   breeds: Breed[]
+
+  /**
+   *  Callback when selecting a breed
+   */
   onSelectBreed: (breedId: string) => void
 }
 

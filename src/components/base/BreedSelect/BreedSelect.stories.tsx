@@ -4,6 +4,9 @@ import BreedSelect, { BreedSelectProps } from '.'
 const meta: Meta = {
   title: 'Base/Breed Select',
   component: BreedSelect,
+  parameters: {
+    componentSubtitle: 'UI Component for selecting breeds of cats',
+  },
 }
 
 const Template: Story<BreedSelectProps> = (args) => <BreedSelect {...args} />

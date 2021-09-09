@@ -7,7 +7,14 @@ import Button from 'react-bootstrap/Button'
 import useStyles from './useStyles'
 
 export interface MasterCardProps {
+  /**
+   * A cat's unique identifier, or slug
+   */
   catId: string
+
+  /**
+   * A picture url of your little furry friend 😍
+   */
   imageUrl: string
 }
 

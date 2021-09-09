@@ -6,6 +6,9 @@ import useStyles from './useStyles'
 import MasterCard from '../../base/MasterCard'
 
 export interface CatListProps {
+  /**
+   * List of cats
+   */
   cats: Cat[]
 }
 
