@@ -6,6 +6,8 @@ A simple application for browsing Cat data from the [CatAPI](https://thecatapi.c
 
 Demo: [https://wonderful-swartz-08871d.netlify.app/](https://wonderful-swartz-08871d.netlify.app/)
 
+Storybook: [https://tender-jackson-35705e.netlify.app](https://tender-jackson-35705e.netlify.app)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
