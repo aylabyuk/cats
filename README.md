@@ -4,6 +4,8 @@
 
 A simple application for browsing Cat data from the [CatAPI](https://thecatapi.com/)
 
+Demo: [https://wonderful-swartz-08871d.netlify.app/](https://wonderful-swartz-08871d.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -47,7 +49,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `yarn storybook`
 
-Run the storybook server at port 6006
+Run the storybook server
+
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
 ## Learn More
 
